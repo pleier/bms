@@ -60,7 +60,7 @@ public class SysLogAspect {
 
         SysLogEntity sysLog = new SysLogEntity();
         SysLog syslog = method.getAnnotation(SysLog.class);
-        if(syslog != null){
+        if (syslog != null) {
             //注解上的描述
             sysLog.setOperation(syslog.value());
         }
@@ -72,10 +72,10 @@ public class SysLogAspect {
 
         //请求的参数
         Object[] args = joinPoint.getArgs();
-        try{
+        try {
             String params = new Gson().toJson(args[0]);
             sysLog.setParams(params);
-        }catch (Exception e){
+        } catch (Exception e) {
 
         }
 
