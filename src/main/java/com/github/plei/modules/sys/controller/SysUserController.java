@@ -4,7 +4,7 @@ import com.github.plei.common.annotation.SysLog;
 import com.github.plei.common.utils.PageUtils;
 import com.github.plei.common.utils.Query;
 import com.github.plei.common.utils.Result;
-import com.github.plei.common.validator.Assert;
+import com.github.plei.common.validator.AbstractAssert;
 import com.github.plei.common.validator.ValidatorUtils;
 import com.github.plei.common.validator.group.AddGroup;
 import com.github.plei.common.validator.group.UpdateGroup;
@@ -87,7 +87,7 @@ public class SysUserController extends AbstractController {
     @SysLog("修改密码")
     @RequestMapping("/password")
     public Result password(String password, String newPassword) {
-        Assert.isBlank(newPassword, "新密码不为能空");
+        AbstractAssert.isBlank(newPassword, "新密码不为能空");
 
         //原密码
         password = ShiroUtils.sha256(password, getUser().getSalt());
