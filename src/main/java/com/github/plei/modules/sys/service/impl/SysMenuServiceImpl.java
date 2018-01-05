@@ -22,6 +22,7 @@ import java.util.Map;
  */
 @Service("sysMenuService")
 public class SysMenuServiceImpl implements SysMenuService {
+
     @Autowired
     @Qualifier("sysMenuDao")
     private SysMenuDao sysMenuDao;

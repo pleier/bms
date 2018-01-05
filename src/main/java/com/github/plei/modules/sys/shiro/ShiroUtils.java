@@ -9,12 +9,17 @@ import org.apache.shiro.subject.Subject;
 
 /**
  * shiro工具类
+ *
  * @author pleier
  */
 public class ShiroUtils {
-    /**  加密算法 */
+    /**
+     * 加密算法
+     */
     public final static String HASH_ALGORITHM_NAME = "SHA-256";
-    /**  循环次数 */
+    /**
+     * 循环次数
+     */
     public final static int HASH_ITERATIONS = 16;
 
     public static String sha256(String password, String salt) {
@@ -30,7 +35,7 @@ public class ShiroUtils {
     }
 
     public static SysUserEntity getUserEntity() {
-        return (SysUserEntity)SecurityUtils.getSubject().getPrincipal();
+        return (SysUserEntity) SecurityUtils.getSubject().getPrincipal();
     }
 
     public static Long getUserId() {
@@ -55,7 +60,7 @@ public class ShiroUtils {
 
     public static String getKaptcha(String key) {
         Object kaptcha = getSessionAttribute(key);
-        if(kaptcha == null){
+        if (kaptcha == null) {
             throw new BmsException("验证码已失效");
         }
         getSession().removeAttribute(key);

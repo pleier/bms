@@ -15,11 +15,13 @@ import java.util.Map;
 
 /**
  * 部门管理
+ *
  * @author : pleier
  * @date: 2017/12/11
  */
 @Service("sysDeptService")
 public class SysDeptServiceImpl implements SysDeptService {
+
     @Autowired
     @Qualifier("sysDeptDao")
     private SysDeptDao sysDeptDao;
@@ -32,7 +34,7 @@ public class SysDeptServiceImpl implements SysDeptService {
     @Override
     @DataFilter(tableAlias = "d", user = false)
     public List<SysDeptEntity> queryList(Map<String, Object> map) {
-        return  sysDeptDao.queryList(map);
+        return sysDeptDao.queryList(map);
     }
 
     @Override
@@ -74,10 +76,10 @@ public class SysDeptServiceImpl implements SysDeptService {
     /**
      * 递归
      */
-    private void getDeptTreeList(List<Long> subIdList, List<Long> deptIdList){
-        for(Long deptId : subIdList){
+    private void getDeptTreeList(List<Long> subIdList, List<Long> deptIdList) {
+        for (Long deptId : subIdList) {
             List<Long> list = queryDetpIdList(deptId);
-            if(list.size() > 0){
+            if (list.size() > 0) {
                 getDeptTreeList(list, deptIdList);
             }
 

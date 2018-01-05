@@ -12,11 +12,13 @@ import java.util.Map;
 
 /**
  * 系统日志
+ *
  * @author : pleier
  * @date: 2017/12/14
  */
 @Service("sysLogService")
 public class SysLogServiceImpl implements SysLogService {
+
     @Autowired
     @Qualifier("sysLogDao")
     private SysLogDao sysLogDao;

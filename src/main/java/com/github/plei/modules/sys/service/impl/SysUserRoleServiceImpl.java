@@ -12,6 +12,7 @@ import java.util.Map;
 
 /**
  * 用户与角色对应关系
+ *
  * @author : pleier
  * @date: 2017/12/12
  */
@@ -24,7 +25,7 @@ public class SysUserRoleServiceImpl implements SysUserRoleService {
 
     @Override
     public void saveOrUpdate(Long userId, List<Long> roleIdList) {
-        if(roleIdList.size()==0){
+        if (roleIdList.size() == 0) {
             return;
         }
 

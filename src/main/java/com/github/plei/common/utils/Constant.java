@@ -2,19 +2,21 @@ package com.github.plei.common.utils;
 
 /**
  * 常量
+ *
  * @author : pleier
  * @date: 2017/11/29
  */
 public class Constant {
-    /** 超级管理员ID */
+    /**
+     * 超级管理员ID
+     */
     public static final int SUPER_ADMIN = 1;
 
     /**
      * 菜单类型
      *
-     * @author chenshun
-     * @email sunlightcs@gmail.com
-     * @date 2016年11月15日 下午1:24:29
+     * @author pleier
+     * @date 2017/11/29
      */
     public enum MenuType {
         /**
@@ -32,7 +34,7 @@ public class Constant {
 
         private int value;
 
-        private MenuType(int value) {
+        MenuType(int value) {
             this.value = value;
         }
 
@@ -44,9 +46,8 @@ public class Constant {
     /**
      * 定时任务状态
      *
-     * @author chenshun
-     * @email sunlightcs@gmail.com
-     * @date 2016年12月3日 上午12:07:22
+     * @author pleier
+     * @date 2017/11/29
      */
     public enum ScheduleStatus {
         /**
@@ -60,7 +61,7 @@ public class Constant {
 
         private int value;
 
-        private ScheduleStatus(int value) {
+        ScheduleStatus(int value) {
             this.value = value;
         }
 
@@ -88,7 +89,7 @@ public class Constant {
 
         private int value;
 
-        private CloudService(int value) {
+        CloudService(int value) {
             this.value = value;
         }
 

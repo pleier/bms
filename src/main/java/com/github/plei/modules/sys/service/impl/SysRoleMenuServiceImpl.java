@@ -19,6 +19,7 @@ import java.util.Map;
  */
 @Service("sysRoleMenuService")
 public class SysRoleMenuServiceImpl implements SysRoleMenuService {
+
     @Autowired
     @Qualifier("sysRoleMenuDao")
     private SysRoleMenuDao sysRoleMenuDao;

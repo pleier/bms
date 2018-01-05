@@ -6,6 +6,7 @@ import java.io.IOException;
 
 /**
  * xss过滤
+ *
  * @author pleier
  */
 public class XssFilter implements Filter {

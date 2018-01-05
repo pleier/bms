@@ -15,6 +15,7 @@ import java.util.Map;
 
 /**
  * 系统配置信息
+ *
  * @author : pleier
  * @date: 2017/12/15
  */
@@ -37,7 +38,7 @@ public class SysConfigServiceImpl implements SysConfigService {
 
     @Override
     public void updateValueByKey(String key, String value) {
-        sysConfigDao.updateValueByKey(key,value);
+        sysConfigDao.updateValueByKey(key, value);
     }
 
     @Override
@@ -62,7 +63,7 @@ public class SysConfigServiceImpl implements SysConfigService {
 
     @Override
     public String getValue(String key) {
-        SysConfigEntity config =sysConfigDao.queryByKey(key);
+        SysConfigEntity config = sysConfigDao.queryByKey(key);
 
         return config == null ? null : config.getValue();
     }
@@ -70,7 +71,7 @@ public class SysConfigServiceImpl implements SysConfigService {
     @Override
     public <T> T getConfigObject(String key, Class<T> clazz) {
         String value = getValue(key);
-        if(StringUtils.isNotBlank(value)){
+        if (StringUtils.isNotBlank(value)) {
             return new Gson().fromJson(value, clazz);
         }
 

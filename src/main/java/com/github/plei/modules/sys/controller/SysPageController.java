@@ -27,4 +27,5 @@ public class SysPageController {
     public String index() {
         return "index.html";
     }
+
 }

@@ -20,14 +20,17 @@ import java.util.Map;
 
 /**
  * 系统用户
+ *
  * @author : pleier
  * @date: 2017/11/29
  */
 @Service("sysUserService")
 public class SysUserServiceImpl implements SysUserService {
+
     @Autowired
     @Qualifier("sysUserDao")
     private SysUserDao sysUserDao;
+
     @Autowired
     @Qualifier("sysUserRoleService")
     private SysUserRoleService sysUserRoleService;
@@ -81,9 +84,9 @@ public class SysUserServiceImpl implements SysUserService {
     @Override
     @Transactional(rollbackFor = Exception.class)
     public void update(SysUserEntity user) {
-        if(StringUtils.isBlank(user.getPassword())){
+        if (StringUtils.isBlank(user.getPassword())) {
             user.setPassword(null);
-        }else{
+        } else {
             user.setPassword(ShiroUtils.sha256(user.getPassword(), user.getSalt()));
         }
         sysUserDao.update(user);

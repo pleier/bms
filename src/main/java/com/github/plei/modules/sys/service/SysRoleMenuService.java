@@ -4,6 +4,7 @@ import java.util.List;
 
 /**
  * 角色与菜单对应关系
+ *
  * @author : pleier
  * @date: 2017/12/11
  */
@@ -11,6 +12,7 @@ public interface SysRoleMenuService {
 
     /**
      * 保存或者修改
+     *
      * @param roleId
      * @param menuIdList
      */
@@ -19,6 +21,7 @@ public interface SysRoleMenuService {
 
     /**
      * 根据角色ID，获取菜单ID列表
+     *
      * @param roleId
      * @return
      */

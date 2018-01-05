@@ -7,6 +7,7 @@ import java.util.Map;
 
 /**
  * 角色
+ *
  * @author : pleier
  * @date: 2017/12/11
  */
@@ -14,6 +15,7 @@ public interface SysRoleService {
 
     /**
      * 根据id查询
+     *
      * @param roleId
      * @return
      */
@@ -21,6 +23,7 @@ public interface SysRoleService {
 
     /**
      * 根据条件查询
+     *
      * @param map
      * @return
      */
@@ -28,6 +31,7 @@ public interface SysRoleService {
 
     /**
      * 查询 符合条件的数据数量
+     *
      * @param map
      * @return
      */
@@ -35,18 +39,21 @@ public interface SysRoleService {
 
     /**
      * 保存
+     *
      * @param role
      */
     void save(SysRoleEntity role);
 
     /**
      * 修改
+     *
      * @param role
      */
     void update(SysRoleEntity role);
 
     /**
      * 删除
+     *
      * @param roleIds
      */
     void deleteBatch(Long[] roleIds);

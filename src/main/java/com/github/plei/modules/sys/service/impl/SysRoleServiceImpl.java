@@ -23,6 +23,7 @@ import java.util.Map;
  */
 @Service("sysRoleService")
 public class SysRoleServiceImpl implements SysRoleService {
+
     @Autowired
     @Qualifier("sysRoleDao")
     private SysRoleDao sysRoleDao;
