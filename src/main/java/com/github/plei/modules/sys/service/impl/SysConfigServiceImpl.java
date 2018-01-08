@@ -3,6 +3,7 @@ package com.github.plei.modules.sys.service.impl;
 import com.github.plei.common.exception.BmsException;
 import com.github.plei.modules.sys.dao.SysConfigDao;
 import com.github.plei.modules.sys.entity.SysConfigEntity;
+import com.github.plei.modules.sys.redis.SysConfigRedis;
 import com.github.plei.modules.sys.service.SysConfigService;
 import com.google.gson.Gson;
 import org.apache.commons.lang.StringUtils;
@@ -26,23 +27,34 @@ public class SysConfigServiceImpl implements SysConfigService {
     @Qualifier("sysConfigDao")
     private SysConfigDao sysConfigDao;
 
+    @Autowired
+    @Qualifier("sysConfigRedis")
+    private SysConfigRedis sysConfigRedis;
+
     @Override
     public void save(SysConfigEntity config) {
         sysConfigDao.save(config);
+        sysConfigRedis.saveOrUpdate(config);
     }
 
     @Override
     public void update(SysConfigEntity config) {
         sysConfigDao.update(config);
+        sysConfigRedis.saveOrUpdate(config);
     }
 
     @Override
     public void updateValueByKey(String key, String value) {
         sysConfigDao.updateValueByKey(key, value);
+        sysConfigRedis.delete(key);
     }
 
     @Override
     public void deleteBatch(Long[] ids) {
+        for (Long id : ids) {
+            SysConfigEntity config = queryObject(id);
+            sysConfigRedis.delete(config.getKey());
+        }
         sysConfigDao.deleteBatch(ids);
     }
 
@@ -63,7 +75,11 @@ public class SysConfigServiceImpl implements SysConfigService {
 
     @Override
     public String getValue(String key) {
-        SysConfigEntity config = sysConfigDao.queryByKey(key);
+        SysConfigEntity config = sysConfigRedis.get(key);
+        if(config == null){
+            config = sysConfigDao.queryByKey(key);
+            sysConfigRedis.saveOrUpdate(config);
+        }
 
         return config == null ? null : config.getValue();
     }
