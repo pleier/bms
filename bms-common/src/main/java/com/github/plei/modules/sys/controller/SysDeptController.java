@@ -19,7 +19,7 @@ import java.util.List;
  * 部门管理
  *
  * @author : pleier
- * @date: 2017/12/11
+ * @date : 2017/12/11
  */
 @RestController
 @RequestMapping("/sys/dept")

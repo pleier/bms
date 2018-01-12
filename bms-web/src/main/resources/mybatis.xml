@@ -9,7 +9,10 @@
         <setting name="mapUnderscoreToCamelCase" value="true" />
 
     </settings>
+
+    <!--批量定义别名-->
     <typeAliases>
         <package name="com.github.plei.modules.sys.entity"/>
+        <package name="com.github.plei.modules.job.entity"/>
     </typeAliases>
 </configuration>

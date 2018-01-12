@@ -13,7 +13,7 @@
         <property name="sessionValidationSchedulerEnabled" value="true"/>
         <property name="sessionValidationScheduler" ref="sessionValidationScheduler"/>
         <!--根据是否使用了Redis选择sessionDAO-->
-        <property name="sessionDAO" ref="redisShiroSessionDAO"/>
+        <property name="sessionDAO" ref="sessionDAO"/>
         <property name="sessionIdCookieEnabled" value="true"/>
         <property name="sessionIdCookie" ref="sessionIdCookie"/>
     </bean>
