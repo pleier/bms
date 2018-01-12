@@ -1,21 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:util="http://www.springframework.org/schema/util"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="
-       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-       http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!-- 会话管理器 -->
     <bean id="sessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
         <property name="globalSessionTimeout" value="1800000"/>
-        <property name="deleteInvalidSessions" value="true"/>
         <property name="sessionValidationSchedulerEnabled" value="true"/>
-        <property name="sessionValidationScheduler" ref="sessionValidationScheduler"/>
+        <property name="sessionIdUrlRewritingEnabled" value="false"/>
         <!--根据是否使用了Redis选择sessionDAO-->
         <property name="sessionDAO" ref="sessionDAO"/>
-        <property name="sessionIdCookieEnabled" value="true"/>
-        <property name="sessionIdCookie" ref="sessionIdCookie"/>
     </bean>
 
     <!-- 安全管理器 -->
@@ -29,21 +24,16 @@
         <property name="securityManager" ref="securityManager"/>
         <property name="loginUrl" value="/login.html"/>
         <property name="unauthorizedUrl" value="/"/>
-        <property name="filters">
-            <util:map>
-                <entry key="authc" value-ref="formAuthenticationFilter"/>
-            </util:map>
-        </property>
-        <property name="filterChainDefinitions">
-            <value>
-                /statics/** = anon
-                /swagger/** = anon
-                /login.html = anon
-                /sys/login = anon
-                /favicon.ico = anon
-                /captcha.jpg = anon
-                /** = authc
-            </value>
+        <property name="filterChainDefinitionMap">
+            <map>
+                <entry key="/statics/**" value="anon"/>
+                <entry key="/swagger/**" value="anon"/>
+                <entry key="/login.html" value="anon"/>
+                <entry key="/sys/login" value="anon"/>
+                <entry key="/favicon.ico" value="anon"/>
+                <entry key="/captcha.jpg" value="anon"/>
+                <entry key="/**" value="authc"/>
+            </map>
         </property>
     </bean>
 
@@ -56,12 +46,6 @@
 
     <!-- Realm实现 -->
     <bean id="userRealm" class="com.github.plei.modules.sys.shiro.UserRealm"/>
-
-    <!-- 会话验证调度器 -->
-    <bean id="sessionValidationScheduler" class="org.apache.shiro.session.mgt.quartz.QuartzSessionValidationScheduler">
-        <property name="sessionValidationInterval" value="1800000"/>
-        <property name="sessionManager" ref="sessionManager"/>
-    </bean>
 
     <!-- 会话DAO -->
     <bean id="sessionDAO" class="org.apache.shiro.session.mgt.eis.EnterpriseCacheSessionDAO">

@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 /**
  * Redis切面处理类
  * @author : pleier
- * @date: 2018/1/8
+ * @date : 2018/1/8
  */
 @Aspect
 @Component
