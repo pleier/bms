@@ -14,14 +14,29 @@ import org.slf4j.LoggerFactory;
 public abstract class AbstractController {
     protected Logger logger = LoggerFactory.getLogger(getClass());
 
+    /**
+     * 获取当前用户
+     *
+     * @return
+     */
     protected SysUserEntity getUser() {
         return (SysUserEntity) SecurityUtils.getSubject().getPrincipal();
     }
 
+    /**
+     * 获取当前用户Id
+     *
+     * @return
+     */
     protected Long getUserId() {
         return getUser().getUserId();
     }
 
+    /**
+     * 获取当前用户部门Id
+     *
+     * @return
+     */
     protected Long getDeptId() {
         return getUser().getDeptId();
     }
