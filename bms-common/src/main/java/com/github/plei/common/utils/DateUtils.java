@@ -27,8 +27,18 @@ public class DateUtils {
      * @param date
      * @return 格式后的日期字符串
      */
-    public static String format(Date date) {
+    public static String formatDate(Date date) {
         return format(date, DATE_PATTERN);
+    }
+
+    /**
+     * yyyy-MM-dd HH:mm:ss 格式
+     *
+     * @param date
+     * @return 格式后的日期字符串
+     */
+    public static String formatDateTime(Date date) {
+        return format(date, DATE_TIME_PATTERN);
     }
 
     /**
