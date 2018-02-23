@@ -5,6 +5,7 @@ import java.util.Map;
 
 /**
  * @author pleier
+ * @date
  */
 public class Result extends HashMap<String, Object> {
     private static final long serialVersionUID = 3204450244886257640L;

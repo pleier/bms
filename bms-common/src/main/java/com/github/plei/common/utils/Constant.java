@@ -4,7 +4,7 @@ package com.github.plei.common.utils;
  * 常量
  *
  * @author : pleier
- * @date: 2017/11/29
+ * @date : 2017/11/29
  */
 public class Constant {
     /**

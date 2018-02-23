@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
  * Redis工具类
  *
  * @author : pleier
- * @date: 2018/1/8
+ * @date : 2018/1/8
  */
 @Component("redisUtils")
 public class RedisUtils {
@@ -53,8 +53,8 @@ public class RedisUtils {
     /**
      * 插入数据，过期时间为默认
      *
-     * @param key
-     * @param value
+     * @param key key
+     * @param value value
      */
     public void set(String key, Object value) {
         set(key, value, DEFAULT_EXPIRE);
@@ -63,11 +63,11 @@ public class RedisUtils {
     /**
      * 获取从json转换的对象，更新过期时间
      *
-     * @param key
-     * @param clazz
+     * @param key key
+     * @param clazz clazz
      * @param expire 过期时间
-     * @param <T>
-     * @return
+     * @param <T> clazz
+     * @return clazz
      */
     public <T> T get(String key, Class<T> clazz, long expire) {
         String value = valueOperations.get(key);
@@ -80,10 +80,10 @@ public class RedisUtils {
     /**
      * 获取从json转换的对象，不更新过期时间
      *
-     * @param key
+     * @param key key
      * @param clazz 转换后的类型
-     * @param <T>
-     * @return
+     * @param <T> clazz
+     * @return clazz
      */
     public <T> T get(String key, Class<T> clazz) {
         return get(key, clazz, NOT_EXPIRE);
@@ -92,9 +92,9 @@ public class RedisUtils {
     /**
      * 获取String类型value，更新过期时间
      *
-     * @param key
+     * @param key key
      * @param expire 过期时间（单位：秒）
-     * @return
+     * @return String
      */
     public String get(String key, long expire) {
         String value = valueOperations.get(key);
@@ -107,8 +107,8 @@ public class RedisUtils {
     /**
      * 获取String类型value，不更新过期时间
      *
-     * @param key
-     * @return
+     * @param key key
+     * @return String
      */
     public String get(String key) {
         return get(key, NOT_EXPIRE);
@@ -117,7 +117,7 @@ public class RedisUtils {
     /**
      * 删除
      *
-     * @param key
+     * @param key key
      */
     public void delete(String key) {
         redisTemplate.delete(key);
@@ -139,8 +139,8 @@ public class RedisUtils {
      *
      * @param json  需要转换的json数据
      * @param clazz 转换后的类型
-     * @param <T>
-     * @return
+     * @param <T>clazz
+     * @return clazz
      */
     private <T> T fromJson(String json, Class<T> clazz) {
         return gson.fromJson(json, clazz);

@@ -9,7 +9,7 @@ import java.util.Map;
  * 查询参数
  *
  * @author : pleier
- * @date: 2017/12/7
+ * @date : 2017/12/7
  */
 public class Query extends LinkedHashMap<String, Object> {
     private static final long serialVersionUID = 460200526823964846L;

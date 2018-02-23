@@ -65,7 +65,7 @@ public class SpringContextUtils implements ApplicationContextAware {
      * 获取类型
      *
      * @param name 名称
-     * @return
+     * @return Object
      */
     public static Class<? extends Object> getType(String name) {
         return applicationContext.getType(name);
